@@ -1,103 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cek Khodam By Arif</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: calc(100% - 22px);
-            margin-right: 10px;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .khodam-name {
-            font-size: 1.2em;
-            margin-top: 20px;
-        }
-    </style>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <h1>Cek Khodam</h1>
-    <div class="input-group">
-        <input type="text" id="namaInput" placeholder="Masukkan nama Anda" autocomplete="off"
-            onkeydown="checkEnter(event)">
-        <button onclick="generateKhodamName()">Cek Nama Khodam</button>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendToDisplay('0')">0</button>
+        </div>
     </div>
-    <div class="khodam-name" id="khodamNameDisplay"></div>
-
-    <script>
-        // Daftar nama khodam
-        const khodamNames = [
-            "Siput Laut",
-            "Ondel-Ondel",
-            "Bocah Ngantuk",
-            "Supri Joget",
-            "Rawa Rontek",
-            "Mertua Joget",
-            "Monyet Goyang",
-            "Bocah Setan",
-        ]
-
-        // Fungsi untuk memilih nama khodam secara acak
-        function getRandomKhodamName() {
-            const randomIndex = Math.floor(Math.random() * khodamNames.length);
-            return khodamNames[randomIndex];
-        }
-
-        // Fungsi untuk memproses input nama dan menampilkan nama khodam
-        function generateKhodamName() {
-            const namaInput = document.getElementById("namaInput").value.trim();
-            if (namaInput === "") {
-                alert("Silakan masukkan nama Anda terlebih dahulu!");
-                return;
-            }
-
-            const khodamNameDisplay = document.getElementById("khodamNameDisplay");
-            const randomKhodamName = getRandomKhodamName();
-            khodamNameDisplay.textContent = `Nama: ${namaInput}, Khodam: ${randomKhodamName}`;
-        }
-
-        // Fungsi untuk memeriksa apakah tombol Enter ditekan
-        function checkEnter(event) {
-            if (event.keyCode === 13) {
-                generateKhodamName();
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
-
 </html>
